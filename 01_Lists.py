@@ -5,7 +5,8 @@
 # Función para agregar un elemento a la lista 
 def agregar_elemento(lista):
     print("\n--- Ejecutando: Agregar un elemento ---")  
-    n = int(input("Ingrese el elemento a agregar: "))
+    n = input("Ingrese el elemento a agregar: ")
+    n = convertir_elemento(n)
     lista.append(n)
     print("Este elemento ha sido agregado:", n, "\nY por lo tanto, la nueva lista es", lista)
 
@@ -15,7 +16,8 @@ def insertar_elemento(lista):
     while True:
         posicion = int(input("Ingrese la posición: "))
         if 0 <= posicion <= len(lista):  
-            n = int(input("Ingrese el elemento: "))
+            n = input("Ingrese el elemento: ")
+            n = convertir_elemento(n)
             lista.insert(posicion, n)
             print("Este elemento ha sido insertado:", n, "\nY por lo tanto, la nueva lista es", lista)
             break  
@@ -27,19 +29,21 @@ def insertar_elemento(lista):
 def eliminar_elemento(lista):
     print("\n--- Ejecutando: Eliminar un elemento ---")
     while (True):
-        n = int(input("Ingrese el elemento a eliminar: "))
+        n = input("Ingrese el elemento a eliminar: ")
+        n = convertir_elemento(n)
         if n in lista:
             lista.remove(n)
             print("Este elemento ha sido eliminado:", n, "\nY por lo tanto, la nueva lista es", lista)
             break
         else:
-            print("El elemento no está en la lista.")
+            print("El elemento", n, "no está en la lista. Intente nuevamente.")
 
 # Función para encontrar un elemento en la lista y mostrar su posición
 def encontrar_elemento(lista):
     print("\n--- Ejecutando: Encontrar un elemento ---")
     while True:
-        n = int(input("Ingrese el elemento a buscar: "))
+        n = input("Ingrese el elemento a buscar: ")
+        n = convertir_elemento(n)
         if n in lista:
             indice = lista.index(n)  
             print("El elemento", n, "está en la lista y está ubicado en el índice:", indice)
@@ -49,9 +53,15 @@ def encontrar_elemento(lista):
 
 # Función para contar un elemento en la lista
 def contar_elemento(lista):
-    print("\n--- Ejecutando: Contar un elemento ---") 
-    n = int(input("Ingrese el elemento a contar: "))
-    print("El elemento", n, "aparece", lista.count(n), "veces en la lista.")
+    print("\n--- Ejecutando: Contar un elemento ---")
+    while (True):
+        n = input("Ingrese el elemento a contar: ")
+        n = convertir_elemento(n)
+        if n in lista:
+            print("El elemento", n, "aparece", lista.count(n), "veces en la lista.")
+            break
+        else:
+            print("El elemento", n, "no está en la lista. Intente nuevamente.")
 
 # Función para ordenar la lista
 def ordenar_lista(lista):
@@ -70,11 +80,31 @@ def limpiar_lista(lista):
     print("\n--- Ejecutando: Limpiar la lista ---")  
     lista.clear()
     print("La lista ha sido vaciada:", lista)
+    
+
+# Funcion convertir elementos en numeros o cadenas de texto de una lista
+def convertir_lista(lista):
+    if all(elemento.isdigit() for elemento in lista):  # Verifica si todos los elementos son números
+        return list(map(int, lista))  # Convierte a enteros
+    else:
+        return list(map(str, lista))  # Mantiene como cadenas
+
+# Convierte en un elemento en numero o string dentro de la lista
+def convertir_elemento(n):
+    if n.isdigit():  
+        return int(n)  
+    else:
+        return str(n)
+
 
 # Función para nuestro menú interactivo
 def menu():
-    print("### Menú interactivo de listas en Python ###")
-    lista = list(map(int, input("Ingrese los elementos de la lista separados por espacio: ").split()))
+    print("\n--- Ejecutando: Menú interactivo de listas ---")
+    lista = input("Ingrese los elementos de la lista separados por espacio: ").split()
+    lista = convertir_lista(lista)  # Convertir la lista según su contenido
+    print("\n--- creando lista... ---")
+    print("\nLa lista actual: ", lista)
+    
     while True:
         print("\n ### Menú interactivo de listas en Python ###")
         print("\nLa lista actual es:", lista)
