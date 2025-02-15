@@ -46,5 +46,5 @@ menú
 3. Verifica si un elemento se encuentra en el conjunto.
 
 ### Ejercicio 5: Anidación de Estructuras 
-• Crea una lista que contenga una tupla y un diccionario. 
-• Realiza operaciones para acceder y modificar elementos dentro de las estructuras anidadas (similar a los ejercicios anteriores). Igual con un menú.
+1. Crea una lista que contenga una tupla y un diccionario. 
+2. Realiza operaciones para acceder y modificar elementos dentro de las estructuras anidadas (similar a los ejercicios anteriores). Igual con un menú.
