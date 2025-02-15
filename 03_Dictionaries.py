@@ -69,18 +69,11 @@ def convertir_elemento(n):
 def menu():
     print("\n--- Ejecutando: Menú interactivo de Diccionario ---")
     diccionario = {}
-
-    # Pedir al usuario que ingrese pares clave-valor
-    items = input("Ingrese los claves y valores del diccionario separados por espacio (ejemplo: nombre:juan apellido:santos): ").split()
-
-    # Llenar el diccionario con los pares clave-valor
+    items = input("Ingrese las claves y valores del diccionario separados por espacio (ejemplo: nombre:yair apellido:guzman): ").split()
     for par in items:
         clave, valor = par.split(":")
         diccionario[convertir_elemento(clave.strip())] = convertir_elemento(valor.strip())
-    
     print("\n--- Diccionario Creado ---")
-
-    # Menú interactivo
     while True:
         print("\n### Menú interactivo de diccionarios en Python ###")
         print(f"Diccionario actual: {diccionario}")
